@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PlushieMenu(Spigot)">
+    <output-path>$PROJECT_DIR$/../PLuginOutputs</output-path>
+    <root id="archive" name="PlushieMenu(Spigot).jar">
+      <element id="module-output" name="plushiespigto.main" />
+    </root>
+  </artifact>
+</component>

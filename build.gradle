@@ -1,0 +1,66 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "https://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+    }
+}
+
+group = pluginGroup
+version = pluginVersion
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        url 'https://jitpack.io' 
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+apply plugin: "net.minecraftforge.gradle.forge"
+
+minecraft {
+    version = "1.12.2-14.23.5.2768"
+    runDir = "run"
+    mappings = "stable_39"
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compile fileTree(dir: 'libs', include: '*.jar')
+    
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+processResources {
+    
+    inputs.property "version", "1.0.0"
+    inputs.property "mcversion", "1.12.2-14.23.5.2768"
+    
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+        include "mcmod.info"
+        expand "version": "1.0.0",  "mcversion": "1.12.2-14.23.5.2768"
+    }
+    
+}

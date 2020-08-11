@@ -1,0 +1,6 @@
+name: Spigotplushieshop
+version: 1.0
+main: me.itsy.plushiesspigot.spigotplushieshop.Spigotplushieshop
+commands:
+  plushie:
+    permission: plushie.shop
